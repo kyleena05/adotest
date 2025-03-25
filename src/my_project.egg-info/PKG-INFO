@@ -1,0 +1,11 @@
+Metadata-Version: 2.2
+Name: my_project
+Version: 0.0.1+20250325.120814
+Summary: wheel file based on my_project/src
+Home-page: https://databricks.com
+Author: krishnendu.hazra@databricks.com
+Requires-Dist: setuptools
+Dynamic: author
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: summary
