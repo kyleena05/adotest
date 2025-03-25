@@ -1,7 +1,10 @@
 trigger:
-- dev
-- qa
-- main
+  branches:
+    include:
+      - main
+      - qa
+      - dev
+
 
 pool: cicdpool
 
