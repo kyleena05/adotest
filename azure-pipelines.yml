@@ -2,9 +2,10 @@ trigger:
   branches:
     include:
       - main
-      - qa
       - dev
+      - qa
 
+pr: none
 
 pool: Default
 
