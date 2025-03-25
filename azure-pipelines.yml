@@ -2,11 +2,12 @@ trigger:
   branches:
     include:
       - main
-      - qa
       - dev
+      - qa
 
+pr: none
 
-pool: cicdpool
+pool: Default
 
 steps:
 - script: echo "Hello, world!"
