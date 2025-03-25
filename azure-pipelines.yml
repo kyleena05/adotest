@@ -1,12 +1,10 @@
 trigger:
-- main
-
-pr:
-- main
 - dev
 - qa
+- main
 
 pool: cicdpool
+
 steps:
 - script: echo "Hello, world!"
   displayName: 'Run a one-line script'
