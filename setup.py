@@ -15,7 +15,7 @@ sys.path.append("./src")
 import datetime
 import my_project
 
-local_version = datetime.datetime.utcnow().strftime("%Y%m%d.%H%M%S")
+local_version = datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M%S")
 
 setup(
     name="my_project",
