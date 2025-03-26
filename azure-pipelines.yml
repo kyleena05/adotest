@@ -27,6 +27,7 @@ steps:
     else
       echo "No matching branch found, defaulting to development"
       echo "##vso[task.setvariable variable=environment]dev"
+    fi  # Ensure the 'if' block is properly closed
   displayName: 'Set environment based on branch'
 
 - script: |
