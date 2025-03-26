@@ -16,12 +16,12 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://e2-demo-field-eng.cloud.databricks.com
+      host: https://adb-2406102547492810.10.azuredatabricks.net
 
   prod:
     mode: production
     workspace:
-      host: https://e2-demo-field-eng.cloud.databricks.com
+      host: https://adb-2406102547492810.10.azuredatabricks.net
       # We explicitly specify /Workspace/Users/krishnendu.hazra@databricks.com to make sure we only have a single copy.
       root_path: /Workspace/Users/krishnendu.hazra@databricks.com/.bundle/${bundle.name}/${bundle.target}
     permissions:
