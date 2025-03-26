@@ -9,19 +9,28 @@ pr: none
 
 pool: Default
 
-steps:
-- script: echo "Hello, world!"
-  displayName: 'Run a one-line script'
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      echo 'Hello world'
+variables:
+  environment: ''
 
-      databricks bundle validate
-      databricks bundle deploy -t dev
+steps:
+- script: |
+    echo "Determining environment based on branch..."
+    if [[ "$(Build.SourceBranch)" == "refs/heads/main" ]]; then
+      echo "Setting environment to production"
+      echo "##vso[task.setvariable variable=environment]prod"
+    elif [[ "$(Build.SourceBranch)" == "refs/heads/dev" ]]; then
+      echo "Setting environment to development"
+      echo "##vso[task.setvariable variable=environment]dev"
+    elif [[ "$(Build.SourceBranch)" == "refs/heads/qa" ]]; then
+      echo "Setting environment to QA"
+      echo "##vso[task.setvariable variable=environment]qa"
+    else
+      echo "No matching branch found, defaulting to development"
+      echo "##vso[task.setvariable variable=environment]dev"
+  displayName: 'Set environment based on branch'
+
+- script: |
+    echo "Environment set to $(environment)"
+    databricks bundle validate
+    databricks bundle deploy -t $(environment)
+  displayName: 'Validate and Deploy'
